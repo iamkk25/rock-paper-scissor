@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: block;
+    pointer-events: all;
+}
+
+.display__result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    width: 50%;
+    max-width: 500px;
+    height: 250px;
+    padding: 1rem 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px rgba(189, 189, 189, 0.596);
+    animation: slide-down 100ms ease-out 1 forwards;
+}
+
+.winner__text {
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: #8815f3;
+}
+
+.bold {
+    vertical-align: text-bottom;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #e61286;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #8815f3;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #8815f3;
+    text-shadow: 1px 3px 5px rgba(198, 138, 255, 0.582);
+}
+
+.choice,
+.result__box {
+    /* border: 1px solid black; */
+    width: 80%;
+    padding: 1rem 1rem 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.choice__labels,
+.input__box,
+.result__labels,
+.score__card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.choice__labels {
+    margin-bottom: 0.3rem;
+}
+
+.label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
+    color: #e61286;
+}
+
+.player__choice-label,
+.computer__choice-label {
+    width: 45%;
+}
+
+.player__choice,
+.computer__choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 45%;
+    height: 60px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 8px rgba(117, 117, 117, 0.253);
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    font-size: 1.3rem;
+    color: #3131ff;
+    background-color: #f7f7ff;
+    border: 2px solid #3131ff;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #3131ff;
+}
+
+.btn:focus-visible {
+    outline: 2px solid rgba(67, 67, 255, 0.699);
+    outline-offset: -2px;
+    -moz-outline-radius: 3px;
+    box-shadow: 0 0 0 4px rgba(106, 106, 255, 0.699);
+}
+
+.btn:active {
+    box-shadow: 0 0 0 transparent;
+}
+
+.close {
+    width: 90px;
+    height: 40px;
+    font-size: 1.1rem;
+}
+
+.result__box {
+    /*Some styles are Inherited*/
+    padding: 2rem 1rem 1rem;
+}
+
+.winner__box,
+.player__score,
+.computer__score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    border-radius: 10px;
+}
+
+.winner__box {
+    width: 40%;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #8815f3;
+    box-shadow: 0px 0px 8px rgba(143, 143, 143, 0.253);
+}
+
+.player__score,
+.computer__score {
+    width: 25%;
+    font-size: 4rem;
+    color: rgb(53, 138, 36);
+    border: 1px solid rgb(223, 223, 223);
+}
+
+.player__score {
+    box-shadow: -2px 4px 10px rgba(168, 168, 168, 0.253);
+}
+
+.computer__score {
+    box-shadow: 2px 4px 10px rgba(168, 168, 168, 0.253);
+}
+
+.option__btn {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -70%);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .winner__text {
+        font-size: 1.6rem;
+    }
+
+    header {
+        width: 80%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .choice,
+    .result__box {
+        width: 75%;
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    .label {
+        font-size: 1rem;
+    }
+
+    .player__choice-label,
+    .computer__choice-label {
+        width: 40%;
+    }
+
+    .player__choice,
+    .computer__choice {
+        width: 40%;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .btn {
+        width: 120px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .close {
+        width: 100px;
+        font-size: 1.2rem;
+    }
+
+    .result__box {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .winner__box,
+    .player__score,
+    .computer__score {
+        height: 80px;
+        margin: 1rem 0;
+        padding: 1.5rem;
+    }
+
+    .winner__box {
+        font-size: 1.5rem;
+    }
+
+    .player__score,
+    .computer__score {
+        width: 20%;
+    }
+
+    .option__btn {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 975px) {
+    .display__result {
+        padding: 2rem 2.5rem;
+    }
+    .winner__text {
+        font-size: 1.8rem;
+    }
+
+    header {
+        width: 70%;
+    }
+
+    .title {
+        font-size: 4rem;
+    }
+
+    .choice,
+    .result__box {
+        width: 70%;
+        padding: 2rem 2rem 0;
+    }
+
+    .label {
+        font-size: 1.2rem;
+    }
+
+    .player__choice,
+    .computer__choice {
+        height: 90px;
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        width: 140px;
+    }
+
+    .close {
+        width: 120px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .result__box {
+        padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .winner__box {
+        font-size: 1.6rem;
+    }
+
+    .player__score,
+    .computer__score {
+        width: 25%;
+    }
+
+    .option__btn {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .winner__text {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .bold {
+        font-size: 2.5rem;
+    }
+
+    .title {
+        font-size: 5rem;
+    }
+
+    .choice,
+    .result__box {
+        width: 60%;
+    }
+
+    .choice__labels {
+        margin-bottom: 0.5rem;
+    }
+
+    .label {
+        font-size: 1.4rem;
+    }
+
+    .player__choice,
+    .computer__choice {
+        height: 110px;
+        font-size: 2.7rem;
+    }
+
+    .btn{
+        width: 150px;
+    }
+
+    .result__box {
+        padding: 3rem 2rem 2rem;
+    }
+
+    .winner__box {
+        font-size: 2rem;
+    }
+
+    .option__btn{
+        width: 30%;
+    }
+}

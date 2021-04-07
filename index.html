@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1 class="title">Rock-Paper-Scissor</h1>
+    </header>
+    <section class="choice">
+        <div class="choice__labels">
+            <p class="player__choice-label label">Player Choice</p>
+            <p class="computer__choice-label label">Computer Choice</p>
+        </div>
+        <div class="input__box">
+            <div class="player__choice"></div>
+            <div class="computer__choice"></div>
+        </div>
+    </section>
+    <section class="result__box">
+        <div class="result__labels">
+            <p class="player__score-label label">Player Score</p>
+            <p class="result label">Result</p>
+            <p class="computer__score-label label">Computer Score</p>
+        </div>
+        <div class="score__card">
+            <div class="player__score"></div>
+            <div class="winner__box" id="winner__box"></div>
+            <div class="computer__score"></div>
+        </div>
+    </section>
+    <section class="option__btn">
+        <button class="start btn" id="start-btn">Start</button>
+        <button class="reset btn" id="reset-btn">Reset</button>
+    </section>
+</body>
+
+</html>
