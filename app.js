@@ -25,13 +25,8 @@ function randomChoice() {
 
 function getPlayerChoice() {
     let defaultChoice = randomChoice();
-    const enteredChoice = prompt(`${rock}, ${paper}, ${scissor}`, '');
-    let userChoice = enteredChoice.toUpperCase();
-    if (enteredChoice === null) {
-
-        return;
-    }
-    else if (!gameChoice.includes(userChoice)) {
+    const userChoice  = prompt(`${rock}, ${paper}, ${scissor}`, '').toUpperCase();
+    if (!gameChoice.includes(userChoice)) {
         alert(`Invalid User Choice, we chose ${defaultChoice} for you!`);
         return defaultChoice;
     }
