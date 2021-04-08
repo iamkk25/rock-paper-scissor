@@ -25,7 +25,7 @@ body {
     pointer-events: all;
 }
 
-.display__result {
+.card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -70%);
-    width: 50%;
+    width: 70%;
     max-width: 500px;
     height: 250px;
     padding: 1rem 1.5rem;
@@ -57,6 +57,39 @@ body {
     font-size: 2rem;
     font-weight: 600;
     color: #e61286;
+}
+
+.input__box {
+    justify-content: space-evenly;
+}
+
+.user__input-label {
+    width: 100%;
+    color: #e61286;
+    text-align: left;
+}
+
+input.user_input {
+    width: 100%;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: #8815f3;
+}
+
+input.user_input::placeholder {
+    color: #8815f3;
+}
+
+input.user_input:placeholder-shown {
+    color: #e61286;
+}
+
+.input-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
 }
 
 header {
@@ -87,7 +120,7 @@ header {
 }
 
 .choice__labels,
-.input__box,
+.choice__box,
 .result__labels,
 .score__card {
     display: flex;
@@ -127,9 +160,9 @@ header {
 }
 
 .btn {
-    width: 100px;
-    height: 40px;
-    font-size: 1.3rem;
+    width: 90px;
+    height: 35px;
+    font-size: 1.2rem;
     color: #3131ff;
     background-color: #f7f7ff;
     border: 2px solid #3131ff;
@@ -151,14 +184,54 @@ header {
     box-shadow: 0 0 0 4px rgba(106, 106, 255, 0.699);
 }
 
-.btn:active {
-    box-shadow: 0 0 0 transparent;
-}
-
 .close {
     width: 90px;
     height: 40px;
     font-size: 1.1rem;
+}
+
+.cancel {
+    border: none;
+    color: #ff2424;
+    background-color: #ffeeee;
+}
+
+.cancel:hover {
+    color: white;
+    background-color: #f34545;
+}
+
+.cancel:focus-visible {
+    outline: 2px solid rgba(255, 67, 67, 0.699);
+    outline-offset: -2px;
+    -moz-outline-radius: 3px;
+    box-shadow: 0 0 0 4px rgba(255, 141, 106, 0.699);
+}
+
+.okay {
+    margin-left: 0.5rem;
+    border: 1px solid #178102;
+    color: #178102;
+    background-color: #d9ffd4;
+}
+
+.okay:hover {
+    color: white;
+    background-color: #2baf11;
+    border: none;
+}
+
+.okay:focus-visible {
+    outline: 1px solid rgba(44, 235, 26, 0.699);
+    outline-offset: -2px;
+    -moz-outline-radius: 3px;
+    box-shadow: 0 0 0 4px rgba(148, 255, 106, 0.699);
+}
+
+.btn:active,
+.cancel:active,
+.okay:active {
+    box-shadow: 0 0 0 transparent;
 }
 
 .result__box {
@@ -271,6 +344,17 @@ header {
         font-size: 1.2rem;
     }
 
+    .cancel,
+    .okay {
+        font-size: 1.2rem;
+        width: 90px;
+        height: 35px;
+    }
+
+    .okay{
+        margin-left: 1rem;
+    }
+
     .result__box {
         padding: 2rem 1rem 1rem;
     }
@@ -298,7 +382,7 @@ header {
 }
 
 @media screen and (min-width: 975px) {
-    .display__result {
+    .card {
         padding: 2rem 2.5rem;
     }
     .winner__text {
@@ -337,6 +421,16 @@ header {
         width: 120px;
         height: 45px;
         font-size: 1.3rem;
+    }
+
+    .cancel,
+    .okay {
+        width: 90px;
+        height: 35px;
+    }
+
+    .okay{
+        margin-left: 1.5rem;
     }
 
     .result__box {
@@ -390,7 +484,7 @@ header {
         font-size: 2.7rem;
     }
 
-    .btn{
+    .btn {
         width: 150px;
     }
 
@@ -402,7 +496,7 @@ header {
         font-size: 2rem;
     }
 
-    .option__btn{
+    .option__btn {
         width: 30%;
     }
 }
