@@ -38,15 +38,11 @@ function createDiv(innerElements, ...classNames) {
 
 function getPlayerChoice() {
     let defaultChoice = randomChoice();
-<<<<<<< HEAD
     const enteredChoice = prompt(`${rock}, ${paper}, ${scissor}`, '');
     if(enteredChoice === null) {
         return;
     }
     let userChoice = enteredChoice.toUpperCase();
-=======
-    const userChoice  = prompt(`${rock}, ${paper}, ${scissor}`, '').toUpperCase();
->>>>>>> 3241bc946996a917ff1f760316a52390e4cde1e7
     if (!gameChoice.includes(userChoice)) {
         alert(`Invalid User Choice, we chose ${defaultChoice} for you!`);
         return defaultChoice;
