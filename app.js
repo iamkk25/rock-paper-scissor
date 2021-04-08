@@ -7,7 +7,7 @@ const computerScoreBoard = document.querySelector('.computer__score');
 const resetBtn = document.querySelector('#reset-btn');
 
 const [rock, paper, scissor] = [`ROCK`, `PAPER`, `SCISSOR`];
-const [draw, computerWins, playerWins] = [`draw`, `computer wins`, `player wins`]
+const [draw, computerWins, playerWins] = [`draw`, `computer wins`, `player wins`];
 let gameIsRunning = false;
 const gameChoice = [rock, paper, scissor];
 let playerScore = 0;
@@ -23,14 +23,33 @@ function randomChoice() {
     else return scissor;
 }
 
+function createBackdrop() {
+    const divForBackdrop = document.createElement('div');
+    divForBackdrop.className = 'backdrop';
+    return divForBackdrop;
+}
+
+function createDiv(innerElements, ...classNames) {
+    const div = document.createElement('div');
+    div.className = `${classNames.join(' ')}`;
+    div.innerHTML = innerElements;
+    return div;
+}
+
 function getPlayerChoice() {
     let defaultChoice = randomChoice();
-    const userChoice = prompt(`${rock}, ${paper}, ${scissor}`, '').toUpperCase();
+    const enteredChoice = prompt(`${rock}, ${paper}, ${scissor}`, '');
+    if(enteredChoice === null) {
+        return;
+    }
+    let userChoice = enteredChoice.toUpperCase();
     if (!gameChoice.includes(userChoice)) {
         alert(`Invalid User Choice, we chose ${defaultChoice} for you!`);
         return defaultChoice;
     }
+    console.log(userChoice)
     return userChoice;
+
 }
 
 function getComputerChoice() {
@@ -65,32 +84,30 @@ function getWinners() {
     gameIsRunning = false;
 }
 
+function closeHandler(el1, el2) {
+    document.body.removeChild(el1);
+    document.body.removeChild(el2);
+}
+
 function finish() {
-    const divForBackdrop = document.createElement('div');
-    divForBackdrop.className = 'backdrop';
-    document.body.appendChild(divForBackdrop);
+    const backdrop = createBackdrop();
+    document.body.appendChild(backdrop);
 
     let playerResult = Number(playerScoreBoard.textContent);
     let computerResult = Number(computerScoreBoard.textContent);
 
-    const divForResultCard = document.createElement('div');
-    divForResultCard.className = 'display__result';
-    divForResultCard.innerHTML = `
+    const elementForResultCard = `
         <p class="winner__text">${playerResult === computerResult ? 'Draw' : playerResult > computerResult ? "Player Won" : 'Computer Won'} the match with the score of <span class="bold">${playerResult > computerResult ? playerResult : computerResult}</span></p>
         <button class="close btn">Close</button>
     `;
+    const divForResultCard = createDiv(elementForResultCard, 'card');
     document.body.appendChild(divForResultCard);
 
-    function closeHandler() {
-        document.body.removeChild(divForBackdrop);
-        document.body.removeChild(divForResultCard);
-    }
-
     const closeBtn = document.querySelector('.close');
-    const backdrop = document.querySelector('.backdrop');
+    const backdropEl = document.querySelector('.backdrop');
 
-    closeBtn.addEventListener('click', closeHandler);
-    backdrop.addEventListener('click', closeHandler);
+    closeBtn.addEventListener('click', closeHandler.bind(null, backdrop, divForResultCard));
+    backdropEl.addEventListener('click', closeHandler.bind(null, backdrop, divForResultCard));
 }
 
 function reset() {
