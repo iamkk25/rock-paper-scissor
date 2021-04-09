@@ -90,7 +90,7 @@ function closeHandler(el1, el2) {
     document.body.removeChild(el2);
 }
 
-function finish() {
+function finishBoard() {
     const backdrop = createBackdrop();
     document.body.appendChild(backdrop);
 
@@ -115,7 +115,7 @@ function reset() {
 
     if (playerScoreBoard.textContent == 0 && computerScoreBoard.textContent == 0) return;
 
-    finish()
+    finishBoard()
 
     playerChoice.textContent = '';
     computerChoice.textContent = '';
