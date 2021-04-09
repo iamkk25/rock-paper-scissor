@@ -9,7 +9,6 @@ const resetBtn = document.querySelector('#reset-btn');
 const [rock, paper, scissor] = [`ROCK`, `PAPER`, `SCISSOR`];
 const [draw, computerWins, playerWins] = [`draw`, `computer wins`, `player wins`];
 let gameIsRunning = false;
-let isRunning = false;
 const gameChoice = [rock, paper, scissor];
 let playerScore = 0;
 let computerScore = 0;
@@ -50,7 +49,6 @@ function getPlayerChoice() {
     }
     console.log(userChoice)
     return userChoice;
-
 }
 
 function getComputerChoice() {
@@ -86,8 +84,6 @@ function getWinners() {
             computerScoreBoard.textContent = ++computerScore;
         }
     }
-
-
     gameIsRunning = false;
 }
 
