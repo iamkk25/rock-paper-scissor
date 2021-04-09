@@ -62,8 +62,6 @@ function getWinners() {
     // use this condition when you want to run the game only once.
     // When you use this condition you have to refresh the page every time you want to start the game
     if (gameIsRunning) return;
-
-    // console.log(`Game is Starting Now...`);
     gameIsRunning = true;
 
     const userSelection = getPlayerChoice();
