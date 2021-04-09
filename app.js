@@ -9,6 +9,7 @@ const resetBtn = document.querySelector('#reset-btn');
 const [rock, paper, scissor] = [`ROCK`, `PAPER`, `SCISSOR`];
 const [draw, computerWins, playerWins] = [`draw`, `computer wins`, `player wins`];
 let gameIsRunning = false;
+let isRunning = false;
 const gameChoice = [rock, paper, scissor];
 let playerScore = 0;
 let computerScore = 0;
@@ -39,8 +40,8 @@ function createDiv(innerElements, ...classNames) {
 function getPlayerChoice() {
     let defaultChoice = randomChoice();
     const enteredChoice = prompt(`${rock}, ${paper}, ${scissor}`, '');
-    if(enteredChoice === null) {
-        return;
+    if (enteredChoice === null) {
+        return enteredChoice;
     }
     let userChoice = enteredChoice.toUpperCase();
     if (!gameChoice.includes(userChoice)) {
@@ -68,19 +69,25 @@ function getWinners() {
     gameIsRunning = true;
 
     const userSelection = getPlayerChoice();
-    playerChoice.textContent = userSelection;
-
     const computerSelection = getComputerChoice();
-    computerChoice.textContent = computerSelection;
-    if (userSelection === computerSelection) {
-        showWinnerBox.textContent = `${draw}`;
-    } else if (userSelection === rock && computerSelection === scissor || userSelection === paper && computerSelection === rock || userSelection === scissor && computerSelection === paper) {
-        showWinnerBox.textContent = `${playerWins}`;
-        playerScoreBoard.textContent = ++playerScore;
+
+    if (userSelection === null) {
+        console.log('Stopped because of null');
     } else {
-        showWinnerBox.textContent = `${computerWins}`;
-        computerScoreBoard.textContent = ++computerScore;
+        playerChoice.textContent = userSelection;
+        computerChoice.textContent = computerSelection;
+        if (userSelection === computerSelection) {
+            showWinnerBox.textContent = `${draw}`;
+        } else if (userSelection === rock && computerSelection === scissor || userSelection === paper && computerSelection === rock || userSelection === scissor && computerSelection === paper) {
+            showWinnerBox.textContent = `${playerWins}`;
+            playerScoreBoard.textContent = ++playerScore;
+        } else {
+            showWinnerBox.textContent = `${computerWins}`;
+            computerScoreBoard.textContent = ++computerScore;
+        }
     }
+
+
     gameIsRunning = false;
 }
 
@@ -123,6 +130,7 @@ function reset() {
     computerScoreBoard.textContent = '0';
     playerScore = 0;
     computerScore = 0;
+    console.clear();
 }
 
 startBtn.addEventListener('click', getWinners);
